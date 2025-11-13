@@ -1,0 +1,45 @@
+﻿# Python & virtualenv
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django / databases / uploads
+db.sqlite3
+media/
+staticfiles/
+*.log
+
+# Environment and secrets
+.env
+.env.* 
+secrets.json
+
+# IDE / OS files
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+.DS_Store
+Thumbs.db
+
+# Testing / coverage
+.coverage
+htmlcov/
+pytest_cache/
+.coverage.*
+
+# Packaging
+*.egg-info/
+dist/
+build/
+
+# Node (future web app)
+node_modules/
+
+# Misc
+coverage/
+*.pyc
