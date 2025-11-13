@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import CarShape
 
-# Register your models here.
+@admin.register(CarShape)
+class CarShapeAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+    search_fields = ("name",)
