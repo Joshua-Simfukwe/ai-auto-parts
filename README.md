@@ -165,6 +165,8 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
+```
+
 ## 🤝  Contributing
 We welcome contributions!
 See CONTRIBUTING.md and COMMIT_GUIDELINES.md.
