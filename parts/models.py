@@ -1,4 +1,5 @@
 from django.db import models
+from recommender.services import embed_text
 
 class CarShape(models.Model):
     """
@@ -56,9 +57,21 @@ class Part(models.Model):
     category = models.ForeignKey(PartCategory, on_delete=models.PROTECT)
     description = models.TextField(blank=True)
 
+     # Embedding for semantic search, stored as a JSON array (works on SQLite & PostgreSQL)
+    embedding = models.JSONField(blank=True, null=True)
+
     class Meta:
         verbose_name = "Part"
         verbose_name_plural = "Parts"
 
     def __str__(self):
         return f"{self.brand} {self.name}".strip()
+    
+    def save(self, *args, **kwargs):
+        """
+        Automatically create/update the part's semantic embedding
+        whenever the model is saved.
+        """
+        combined_text = f"{self.brand} {self.name} {self.description}"
+        self.embedding = embed_text(combined_text)
+        super().save(*args, **kwargs)
